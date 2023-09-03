@@ -11,8 +11,8 @@ async function bootstrap() {
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
   const config = new DocumentBuilder()
-    .setTitle('Median')
-    .setDescription('The Median API description')
+    .setTitle('Eventify-api')
+    .setDescription('The Eventify API description')
     .setVersion('0.1')
     .build();
 
