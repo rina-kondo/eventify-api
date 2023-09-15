@@ -6,7 +6,7 @@ export class LoginDto {
    * @example "user1@eventify.com"
    */
   @IsEmail({}, { message: 'メールアドレスの形式が正しくありません' })
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'メールアドレスを入力してください' })
   email: string;
 
   /**
