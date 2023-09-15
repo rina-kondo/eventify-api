@@ -6,7 +6,6 @@ export class CreateEventDto {
    * @example "食事会"
    */
   @IsString({ message: 'タイトルは文字列で入力してください' })
-  @IsNotEmpty({ message: 'タイトルを入力してください' })
   @MinLength(1, { message: 'タイトルは1文字以上で入力してください' })
   @MaxLength(50, { message: 'タイトルは50文字以下で入力してください' })
   summary: string;
@@ -50,6 +49,6 @@ export class CreateEventDto {
    * @example 1
    */
   @IsNumber({}, { message: 'ユーザーIDは数値で入力してください' })
-  @IsNotEmpty({ message: 'ユーザーIDを入力してください' })
+  @IsNotEmpty({ message: 'ユーザー情報を取得出来ません' })
   userId: number;
 }
