@@ -11,12 +11,12 @@ export class AuthService {
   async login(email: string, password: string): Promise<AuthEntity> {
     const user = await this.prisma.user.findUnique({ where: { email: email } });
     if (!user) {
-      throw new NotFoundException(`登録ユーザーが見つかりません: ${email}`);
+      throw new NotFoundException([`登録ユーザーが見つかりません: ${email}`]);
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      throw new UnauthorizedException(`パスワードが違います`);
+      throw new UnauthorizedException([`パスワードが違います`]);
     }
 
     return {
