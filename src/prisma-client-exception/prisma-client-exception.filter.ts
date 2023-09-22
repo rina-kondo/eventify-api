@@ -17,7 +17,7 @@ export class PrismaClientExceptionFilter extends BaseExceptionFilter {
         const status = HttpStatus.CONFLICT;
         response.status(status).json({
           statusCode: status,
-          message: message,
+          message: [`${exception.meta?.target || ''}: 既に使用されています。別の値を入力してください。`],
         });
         break;
       }
@@ -26,7 +26,7 @@ export class PrismaClientExceptionFilter extends BaseExceptionFilter {
         const status = HttpStatus.NOT_FOUND;
         response.status(status).json({
           statusCode: status,
-          message: message,
+          message: [message],
         });
         break;
       }
