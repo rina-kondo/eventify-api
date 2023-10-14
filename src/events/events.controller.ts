@@ -39,6 +39,16 @@ export class EventsController {
     return new EventEntity(await this.eventsService.findOne(id));
   }
 
+  @Get('user/:userId')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '指定ユーザーの予定一覧取得API', description: '指定したユーザーidから予定情報一覧を取得' })
+  @ApiOkResponse({ type: EventEntity, isArray: true })
+  async findByUserId(@Param('userId', ParseIntPipe) userId: number) {
+    const events = await this.eventsService.findByUserId(userId);
+    return events.map((event) => new EventEntity(event));
+  }
+
   @Patch(':id')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
