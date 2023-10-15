@@ -24,6 +24,12 @@ export class EventsService {
     });
   }
 
+  findByUserId(userId: number) {
+    return this.prisma.event.findMany({
+      where: { userId },
+    });
+  }
+
   update(id: number, updateEventDto: UpdateEventDto) {
     return this.prisma.event.update({ where: { id }, data: updateEventDto });
   }
