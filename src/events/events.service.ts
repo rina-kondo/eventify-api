@@ -27,6 +27,7 @@ export class EventsService {
   findByUserId(userId: number) {
     return this.prisma.event.findMany({
       where: { userId },
+      orderBy: [{ dtStart: 'asc' }, { dtEnd: 'desc' }],
     });
   }
 
